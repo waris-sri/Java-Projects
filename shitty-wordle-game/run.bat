@@ -1,0 +1,1 @@
+java -jar ShittyWordleV5.jar
