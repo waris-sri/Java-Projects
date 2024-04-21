@@ -11,7 +11,6 @@
 
  import java.util.Scanner;
  import java.util.ArrayList;
- // Hello My name is Japan
  // TODO: Add PEMDAS sequence!
  
  public class Main {
