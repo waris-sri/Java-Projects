@@ -32,4 +32,7 @@ public class Bracket {
 		list.add(str);
 		return list;
 	}
+	static Stack<Object> getOrderT(String input){
+		
+	}
 }
