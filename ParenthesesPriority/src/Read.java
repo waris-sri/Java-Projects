@@ -12,7 +12,6 @@ public class Read {
 				str += input.charAt(i);	
 				String inputNew = input.replace(str, "");
 				list = returnPriority(inputNew);
-				return list;
 			}
 			else if(input.charAt(i)==')' ) {
 				open--;
@@ -52,18 +51,25 @@ public class Read {
 		Stack<Object> list = new Stack<>();
 		String str = new String();
 		int length = input.length();
-		//int open = 0;
+		int open = 0;
 		for(int i =index ; i < length ; i++ ) {
-			if(input.charAt(i)=='(') {
-				//open++;
+			if(input.charAt(i)=='('&&open==0) {
+				open++;
 				list = test(input, i+1);
-				list.add(str);
-				return list;
+				str += input.charAt(i);	
 			}
-			if(input.charAt(i)==')') {
-				list = test(input, i+1);
-				list.add(str);
-				return list;
+			else if(input.charAt(i)=='('&&open>0) {
+				open++;
+				str += input.charAt(i);
+			}
+			else if(input.charAt(i)==')') {
+				open--;
+				if(open < 0) {
+					break;
+				}
+				else {
+					str += input.charAt(i);
+				}
 			}
 			else {
 				str += input.charAt(i);			
