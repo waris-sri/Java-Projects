@@ -1,33 +1,28 @@
 import java.util.Stack;
 
 public class Bracket {
-	static Stack<Object> getOrder (String input,int index) {
-		Stack<Object> list = new Stack<>();
-		String str = new String();
-		int length = input.length();
-		int open = 0;
+
+	static Stack<Object> getOrder (String input, int index) {
+		Stack<Object> list = new Stack<>();					// Prepare a stack to store the order of the brackets
+		String str = new String();							// Prepare a string to store the order of the brackets
+		int length = input.length();						// Prepare a variable to store the length of the input string
+		int open = 0;										// Initiate a variable to store the number of open brackets
 		for (int i = index; i < length; i++) {
-			if (input.charAt(i) == '(' && open == 0) {
-				open++;
-				list = getOrder(input, i + 1);
-				str += input.charAt(i);	
+			if (input.charAt(i) == '(' && open == 0) {		
+				open++;										// Add the first open bracket to the stack
+				list = getOrder(input, i + 1);				// Get order of brackets in substring after the first open bracket
+				str += input.charAt(i);						// Add the first open bracket order to the string
 			}
 			else if (input.charAt(i) == '(' && open > 0) {
-				open++;
-				str += input.charAt(i);
+				open++;										// Add the next open bracket to the stack
+				str += input.charAt(i);						// Add the next open bracket order to the string
 			}
 			else if (input.charAt(i) == ')') {
-				open--;
-				if (open < 0) {
-					break;
-				}
-				else {
-					str += input.charAt(i);
-				}
+				open--;										
+				if (open < 0) break;						// If the number of open brackets is negative, break the loop
+				else str += input.charAt(i);				// Else add the closing bracket order to the string
 			}
-			else {
-				str += input.charAt(i);			
-			}
+			else str += input.charAt(i);					// Else add the closing bracket order to the string
 		}
 		list.add(str);
 		return list;
