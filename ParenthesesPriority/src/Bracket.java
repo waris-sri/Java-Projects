@@ -27,6 +27,7 @@ public class Bracket {
 		list.add(str);
 		return list;
 	}
+	
 	public static Stack<Object> getOrder(String input) {
 		Stack<Object> list = new Stack<>();						// Prepare a stack to store the order of the brackets
 		return getOrderRecursion(input, 0, list);			// Pile 'list' upon 'input' (results)
