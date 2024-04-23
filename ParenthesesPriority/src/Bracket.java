@@ -2,15 +2,14 @@ import java.util.Stack;
 
 public class Bracket {
 
-	static Stack<Object> getOrder (String input, int index,Stack<Object> list) {
-		//Stack<Object> list = new Stack<>();					// Prepare a stack to store the order of the brackets
+	static Stack<Object> getOrderRecursion (String input, int index,Stack<Object> list) {
 		String str = new String();							// Prepare a string to store the order of the brackets
 		int length = input.length();						// Prepare a variable to store the length of the input string
 		int open = 0;										// Initiate a variable to store the number of open brackets
 		for (int i = index; i < length; i++) {
 			if (input.charAt(i) == '(' && open == 0) {		
 				open++;										// Add the first open bracket to the stack
-				list = getOrder(input, i + 1,list);				// Get order of brackets in substring after the first open bracket
+				list = getOrderRecursion(input, i + 1,list);				// Get order of brackets in substring after the first open bracket
 				str += input.charAt(i);						// Add the first open bracket order to the string
 			}
 			else if (input.charAt(i) == '(' && open > 0) {
@@ -27,8 +26,8 @@ public class Bracket {
 		list.add(str);
 		return list;
 	}
-	static Stack<Object> getOrderT(String input){
-		Stack<Object> list = new Stack<>(); 
-		return getOrder(input,0,list);
+	static Stack<Object> getOrder(String input){			
+		Stack<Object> list = new Stack<>(); 				//Prepare a stack to store the order of the brackets
+		return getOrderRecursion(input,0,list);
 	}
 }
