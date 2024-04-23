@@ -2,7 +2,8 @@ import java.util.Stack;
 
 public class Bracket {
 
-	private static Stack<Object> getOrderRecursion(String input, int index, Stack<Object> list) {
+	private static Stack<Object> getOrderRecursion (String input, int index, Stack<Object> list) {
+		//Stack<Object> list = new Stack<>();					// Prepare a stack to store the order of the brackets
 		String str = new String();								// Prepare a string to store the order of the brackets
 		int length = input.length();							// Prepare a variable to store the length of the input string
 		int open = 0;											// Initiate a variable to store the number of open brackets
@@ -26,9 +27,8 @@ public class Bracket {
 		list.add(str);
 		return list;
 	}
-	
 	public static Stack<Object> getOrder(String input) {
-		Stack<Object> list = new Stack<>(); 					// Prepare a stack to store the order of the brackets
+		Stack<Object> list = new Stack<>();						// Prepare a stack to store the order of the brackets
 		return getOrderRecursion(input, 0, list);			// Pile 'list' upon 'input' (results)
 	}
 }
