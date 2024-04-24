@@ -1,8 +1,10 @@
-import java.util.Stack;
+package bracket;
+
+import java.util.ArrayList;
 
 public class Bracket {
 
-	private static Stack<Object> getOrderRecursion (String input, int index, Stack<Object> list) {
+	private static ArrayList<Object> getOrderRecursion (String input, int index, ArrayList<Object> list) {
 		//Stack<Object> list = new Stack<>();					// Prepare a stack to store the order of the brackets
 		String str = new String();								// Prepare a string to store the order of the brackets
 		int length = input.length();							// Prepare a variable to store the length of the input string
@@ -28,8 +30,8 @@ public class Bracket {
 		return list;
 	}
 	
-	public static Stack<Object> getOrder(String input) {
-		Stack<Object> list = new Stack<>();						// Prepare a stack to store the order of the brackets
+	public static ArrayList<Object> getOrder(String input) {
+		ArrayList<Object> list = new ArrayList<>();						// Prepare a stack to store the order of the brackets
 		return getOrderRecursion(input, 0, list);			// Pile 'list' upon 'input' (results)
 	}
 }
