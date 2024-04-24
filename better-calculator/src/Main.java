@@ -26,13 +26,23 @@
          for (int i = 0; i < input.length(); i++) {
              char currValue = input.charAt(i);
              // If the currValue is a number, add it to the number string.
-             if (Character.isDigit(currValue)) {
+             if (Character.isDigit(currValue)||currValue=='.') {
                  numStr += String.valueOf(currValue);            	
              }
              // Else if currValue is an operation, appropriately add the number
              // and operation to their array lists. Then reset the numStr string.
              else if (currValue == '+' || currValue == '*' || currValue == '/' || currValue == '-') {
-                 operations.add(String.valueOf(currValue));
+            	 if(input.charAt(i+1) == '-' && currValue == '-') {
+            		 operations.add(String.valueOf('+'));
+            		 i++;
+            	 }
+            	 else if(input.charAt(i+1) == '-' && currValue == '+') {
+            		 operations.add(String.valueOf('-'));
+            		 i++;
+            	 }
+            	 else {            		 
+            		 operations.add(String.valueOf(currValue));
+            	 }
                  numbers.add(Double.parseDouble(numStr));
                  numStr = "";
              }
@@ -66,11 +76,23 @@
          }
          return answer;
      }
- 
+     static Double calcBrack(String input) {
+    	 ArrayList<String> list = Bracket.getOrder(input);
+    	 ArrayList<Double> Dlist = new ArrayList<Double>();
+    	 for(int i = 0;i < list.size();i++) {
+    		 String temp = list.get(i);
+    		 for(int j = i-1;j>=0;j-- ) {
+    			 temp = temp.replace('('+list.get(j)+')',Dlist.get(j).toString());
+    		 }
+    		 Dlist.add(calc(temp));
+    	 }
+    	 return Dlist.getLast();
+     }
+     
      public static void main(String[] args) {
-         Scanner scn = new Scanner(System.in);
-         String input = scn.nextLine();
-         System.out.println(calc(input));
-         scn.close();
+        Scanner scn = new Scanner(System.in);
+        String input = scn.nextLine();
+        System.out.println(calcBrack(input));
+        scn.close();
      }
  }	
