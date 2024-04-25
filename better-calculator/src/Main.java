@@ -16,7 +16,7 @@
  
  public class Main {
      
-     public static Double calc(String input) {
+	 /*public static Double calc(String input) {
          // Prepare a string to hold the current [string] number.
          String numStr = new String();
          // Prepare array lists to hold the numbers and operations.
@@ -76,11 +76,16 @@
          }
          return answer;
      }
+     */
      public static Double calc(String input,Double ans) {
          // Prepare a string to hold the current [string] number.
     	 String numStr = new String();
-    	 if(input.charAt(0)=='+'||input.charAt(0)=='-'||input.charAt(0)=='*'||input.charAt(0)=='/') {
-    		numStr = String.valueOf(ans);
+    	 int w = 0;
+    	 while(input.charAt(w) == ' ') {
+    		 w++;
+    	 }
+    	 if(input.charAt(w)=='+'||input.charAt(w)=='-'||input.charAt(w)=='*'||input.charAt(w)=='/') {
+    			 numStr = String.valueOf(ans);
     	 }
          // Prepare array lists to hold the numbers and operations.
          ArrayList<Double> numbers = new ArrayList<>();
@@ -95,19 +100,39 @@
              // Else if currValue is an operation, appropriately add the number
              // and operation to their array lists. Then reset the numStr string.
              else if (currValue == '+' || currValue == '*' || currValue == '/' || currValue == '-') {
-            	 if(input.charAt(i+1) == '-' && currValue == '-') {
-            		 operations.add(String.valueOf('+'));
-            		 i++;
+            	 w = i+1;
+            	 while(input.charAt(w)==' ') {
+            		 w++;
             	 }
-            	 else if(input.charAt(i+1) == '-' && currValue == '+') {
+            	 if(input.charAt(w) == '-' && currValue == '-') {
+            		 operations.add(String.valueOf('+'));
+            		 numbers.add(Double.parseDouble(numStr));
+                     numStr = "";
+            		 i = w;
+            	 }
+            	 else if(input.charAt(w) == '-' && currValue == '+') {
             		 operations.add(String.valueOf('-'));
-            		 i++;
+            		 numbers.add(Double.parseDouble(numStr));
+                     numStr = "";
+            		 i = w;
+            	 }
+            	 else if(input.charAt(w) == '-' && currValue == '*') {
+            		 operations.add(String.valueOf('*'));
+            		 numbers.add(Double.parseDouble(numStr));
+                     numStr = "-";
+            		 i = w;
+            	 }
+            	 else if(input.charAt(w) == '-' && currValue == '/') {
+            		 operations.add(String.valueOf('-'));
+            		 numbers.add(Double.parseDouble(numStr));
+                     numStr = "-";
+            		 i = w;
             	 }
             	 else {            		 
             		 operations.add(String.valueOf(currValue));
+            		 numbers.add(Double.parseDouble(numStr));
+            		 numStr = "";
             	 }
-                 numbers.add(Double.parseDouble(numStr));
-                 numStr = "";
              }
          }
          // Add the last number in the input string to the numbers array list.
@@ -140,7 +165,7 @@
          return answer;
      }
      
-     static Double calcBrack(String input) {
+     /*static Double calcBrack(String input) {
     	 ArrayList<String> list = Bracket.getOrder(input);
     	 ArrayList<Double> Dlist = new ArrayList<Double>();
     	 for(int i = 0;i < list.size();i++) {
@@ -152,6 +177,7 @@
     	 }
     	 return Dlist.getLast();
      }
+     */
      static Double calcBrack(String input,Double ans) {
     	 ArrayList<String> list = Bracket.getOrder(input);
     	 ArrayList<Double> Dlist = new ArrayList<Double>();
@@ -168,15 +194,15 @@
      public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         String input = scn.nextLine();
-        Double ans = calcBrack(input);
-        System.out.print("="+ans);
+        Double ans = calcBrack(input,0.0);
+        System.out.println("="+ans);
         while(true) {
         	input = scn.nextLine();
             if(input.equals("X")) {
             	break;
             }
             ans = calcBrack(input,ans);
-            System.out.print("="+ans);
+            System.out.println("="+ans);
         }
         scn.close();
      }
