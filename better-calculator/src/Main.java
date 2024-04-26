@@ -11,7 +11,9 @@
 
  import java.util.Scanner;
  import java.util.ArrayList;
- import bracket.Bracket;
+import java.util.NoSuchElementException;
+
+import bracket.Bracket;
  // TODO: Add PEMDAS sequence!(Finished)
  
  public class Main {
@@ -149,10 +151,11 @@
          }
          scn.close();
          }
+    	 catch(NoSuchElementException e) {
+    		 e.printStackTrace();
+    	 }
          catch(Exception e) {
          	System.out.println("Syntax error. Try again");
-         }
-         finally {
          	calcStart();
          }
      }
