@@ -134,21 +134,31 @@
     	 return Dlist.getLast();
      }
      
-     public static void main(String[] args) {
+     static void calcStart() {
+    	 try{Scanner scn = new Scanner(System.in);
+         String input = scn.nextLine();
+         Double ans = calcBrack(input,0.0);
+         System.out.println("= "+ans);
+         while(true) {
+         	input = scn.nextLine();
+             if(input.equals("X")) {
+             	break;
+             }
+             ans = calcBrack(input,ans);
+             System.out.println("= "+ans);
+         }
+         scn.close();
+         }
+         catch(Exception e) {
+         	System.out.println("Syntax error. Try again");
+         }
+         finally {
+         	calcStart();
+         }
+     }
+     public static void main(String[] args){
     	// String input ="(1-2+(4 - 3 +( (5  + 7 )- ( 6*8-(18/9))))+(7-7+(5*6))-(1-2))/2";	(Test code)
     	// 4*5-3+6/2*3+3+4-1*9-3/3 (Test code)
-        Scanner scn = new Scanner(System.in);
-        String input = scn.nextLine();
-        Double ans = calcBrack(input,0.0);
-        System.out.println("="+ans);
-        while(true) {
-        	input = scn.nextLine();
-            if(input.equals("X")) {
-            	break;
-            }
-            ans = calcBrack(input,ans);
-            System.out.println("="+ans);
-        }
-        scn.close();
+        calcStart();
      }
  }	
