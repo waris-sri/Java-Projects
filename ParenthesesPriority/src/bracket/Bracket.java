@@ -31,7 +31,7 @@ public class Bracket {
 	}
 	
 	public static ArrayList<String> getOrder(String input) {
-		ArrayList<String> list = new ArrayList<>();						// Prepare a stack to store the order of the brackets
+		ArrayList<String> list = new ArrayList<>();				// Prepare a stack to store the order of the brackets
 		return getOrderRecursion(input, 0, list);			// Pile 'list' upon 'input' (results)
 	}
 }

@@ -56,8 +56,6 @@ public class Main {
 				case "start":
 					ArrayList<String> anslist = new ArrayList<String>();
 					ArrayList<Integer> integerC = new ArrayList<>(integer);
-					//System.out.println(integerC);
-					//System.out.println(integer);
 					System.out.println("\033[33;1m\nHow many digits would you like your integer to have (up to 10)?\033[0m");
 					int digit = scInt.nextInt();
 					while (digit > 10 || digit < 1) {
@@ -65,10 +63,7 @@ public class Main {
 						digit = scInt.nextInt();
 					}
 					for (int i = 0; i < digit; i++) {
-						//System.out.print("digit — i = ");
-						//System.out.println(digit—i);
 						int test = randGen.nextInt(digit-i);
-						//System.out.println("test = "+test);
 						int num = integerC.get(test);
 						anslist.add(String.valueOf(num));
 						integerC.remove(test);
@@ -85,7 +80,6 @@ public class Main {
 						}
 						System.out.println("\033[33m\nEnter your guess (must be a " + digit + "-digit integer):\nEnter <G> to give up.\033[0m");
 						answer = sc.nextLine();
-						// System.out.println("You entered " + answer); // might not need this
 						if (answer.equals("G")) {
 							break;
 						}
@@ -110,55 +104,37 @@ public class Main {
 					}
 					if (answer.equals("G")) {
 						System.out.println("\033[35;1mYou gave up. The answer was " + randNum + ".\033[0m");
-						/* for (int i = 0; i < 40; i++) {
-							System.out.print("——");
-						}
-						*/ System.out.println();
+						System.out.println();
 					}
 					else {
 						System.out.println("\033[35;1mCongratulations! It took you " + guess + " guesses to win.\033[0m");
 						score.add(guess);
 						Collections.sort(score); 
 						list.add(score.indexOf(guess), dateFormatter.format(LocalDate.now()) + " | " + timeFormatter.format(LocalTime.now()) + " | Answer: " + randNum + "\t| Cheat: " + cheat);
-						/* for (int i = 0; i < 40; i++) {
-							System.out.print("——");
-						}
-						*/ System.out.println();
+						System.out.println();
 					}
 					break;
 				
 				case "rules":
 					System.out.println("\033[3m\nEach time you start, you'll need to enter how many digits you want your integers to have. \nThen the game will generate a random number from 0 to the number you chose. \nTo win, you need to guess what the numbers are by entering your answer into the terminal. \nEvery time you guess, the game will tell you how many numbers are in the correct position. \nTry to guess the number with the least number of guesses possible! \nNote: The digits are free of duplicates.\033[0m");
-					/* for (int i = 0; i < 40; i++) {
-						System.out.print("——");
-					}
-					*/ System.out.println();
+					System.out.println();
 					break;
 				
 				case "score":
 					if (list.isEmpty()) {
 						System.out.println("\033[96;3mNo score was recorded.\033[0m");
-						/* for (int i = 0; i < 40; i++) {
-							System.out.print("——");
-						}
-						*/ System.out.println();
+						System.out.println();
 					}
 					else {
 						for (int i = 0; i < score.size(); i++) {
 							System.out.println(i + 1 + ") " + score.get(i) + " guesses \033[0m| " + list.get(i));
 						}
-						/* for (int i = 0; i < 40; i++) {
-							System.out.print("——");
-						}
-						*/ System.out.println();
+						System.out.println();
 					}
 					break;
 				
 				case "close":
 					System.out.println("\033[35;1mThank you for playing!\033[0m");
-					/* for (int i = 0 ; i < 40; i++) {
-						System.out.print("——");
-					} */
 					break;
 				
 				case "cheat":
@@ -170,17 +146,11 @@ public class Main {
 						cheat = true;
 						System.out.println("\033[96;3mCheat enabled\033[0m");
 					}
-					/* for (int i = 0 ; i < 40; i++) {
-						System.out.print("——");
-					} */
 					System.out.println();
 					break;
 				
 				default:
 					System.out.println("\033[31;1mInvalid input, try again!\033[0m\n");
-					// for (int i = 0 ; i < 40; i++) {
-					// 	System.out.print("——");
-					// }
 					System.out.println();
 					break;
 			}
