@@ -7,6 +7,6 @@ public class Play {
 		cube.print();
 		cube.y();
 		System.out.println("");
-		cube.print;
+		cube.print();
 	}
 }
