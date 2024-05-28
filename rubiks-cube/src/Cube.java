@@ -81,6 +81,34 @@ public class Cube {
 		left[2][1] = temp10;
 	}
 	
+	void y() {
+		String[][] temp = front;
+		front = right;
+		right = back;
+		back = left;
+		left = temp;
+		String temp00 = up[0][0];
+		String temp10 = up[1][0];
+		up[0][0] = up[2][0];
+		up[1][0] = up[2][1];
+		up[2][0] = up[2][2];
+		up[2][1] = up[1][2];
+		up[2][2] = up[0][2];
+		up[1][2] = up[0][1];
+		up[0][2] = temp00;
+		up[0][1] = temp10;
+		temp00 = down[0][0];
+		temp10 = down[1][0];
+		down[0][0] = down[2][0];
+		down[1][0] = down[2][1];
+		down[2][0] = down[2][2];
+		down[2][1] = down[1][2];
+		down[2][2] = down[0][2];
+		down[1][2] = down[0][1];
+		down[0][2] = temp00;
+		down[0][1] = temp10;
+	}
+	
 	void print() {
 		for(String[] i : back) {
 			System.out.println("");
