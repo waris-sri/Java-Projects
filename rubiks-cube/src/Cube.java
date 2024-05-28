@@ -99,14 +99,14 @@ public class Cube {
 		up[0][1] = temp10;
 		temp00 = down[0][0];
 		temp10 = down[1][0];
-		down[0][0] = down[2][0];
-		down[1][0] = down[2][1];
-		down[2][0] = down[2][2];
-		down[2][1] = down[1][2];
-		down[2][2] = down[0][2];
-		down[1][2] = down[0][1];
-		down[0][2] = temp00;
-		down[0][1] = temp10;
+		down[0][0] = down[0][2];
+		down[1][0] = down[0][1];
+		down[0][2] = down[2][2];
+		down[0][1] = down[1][2];
+		down[2][2] = down[2][0];
+		down[1][2] = down[2][1];
+		down[2][0] = temp00;
+		down[2][1] = temp10;
 	}
 	
 	void print() {
