@@ -2,7 +2,7 @@ public class Play {
 	public static void main(String[]args){
 		Cube cube = new Cube();
 		cube.print();
-		cube.leftPrime();
+		cube.left();
 		System.out.println("");
 		cube.print();
 	}
