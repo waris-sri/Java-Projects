@@ -81,6 +81,7 @@ public class Cube {
 		left[2][1] = temp10;
 	}
 	
+	// rotate whole clockwise
 	void y() {
 		String[][] temp = front;
 		front = right;
