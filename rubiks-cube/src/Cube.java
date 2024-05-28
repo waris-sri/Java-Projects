@@ -198,7 +198,7 @@ public class Cube {
 		System.out.println("");
 	}
 
-	// rotate whole clockwise
+	// rotate y-axis clockwise
 	void y() {
 		String[][] temp = f;
 		f = r;
@@ -228,7 +228,7 @@ public class Cube {
 		System.out.println("");
 	}
 
-	// rotate whole anti-clockwise
+	// rotate y-axis anti-clockwise
 	void yP() {
 		String[][] temp = f;
 		f = l;
