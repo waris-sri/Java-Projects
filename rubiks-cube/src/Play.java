@@ -1,9 +1,8 @@
 public class Play {
-	public static void main(String[]args){
+	public static void main(String[] args) {
 		Cube cube = new Cube();
 		cube.print();
-		cube.r();
-		cube.rP();
+		cube.yP();
 		cube.print();
 	}
 }
